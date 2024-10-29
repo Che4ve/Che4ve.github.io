@@ -1,0 +1,161 @@
+@import '_default.scss';
+
+.about-me {
+    width: auto;
+    height: auto;
+    //overflow: hidden;
+
+    margin-left: 150px;
+    padding-right: 5%;
+    padding-top: 30px;
+    padding-bottom: 50px;
+    font-size: 1.4rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+
+    pre {
+        font-size: 1.125rem;
+        text-align: left;
+        text-wrap: wrap;
+
+        font-family: "Tahoma", sans-serif;
+    }
+
+    .about-me__greeting {
+        margin: 20px auto 55px;
+        scale: 0.9;
+        opacity: 0.8;
+
+        &:has(.typewriter.visible) {
+            transition: all 1.5s ease;
+            scale: 1;
+            opacity: 1;
+        }
+        &:not(:has(.typewriter.visible)) {
+            transition: all 3s ease;
+        }
+
+        &::before {
+            $height: 7rem;
+            z-index: -1;
+            content: "";
+            position: absolute;
+            @include center;
+
+            width: 110%;
+            height: $height;
+            padding-inline: 20px;
+
+            background-color: white;
+            border-radius: 30px;
+            border: 2px solid rgba(128, 128, 128, 0.2);
+
+            box-shadow: 4px 4px 10px rgba(8, 3, 25, 0.1);
+        }
+    }
+
+    .typewriter,
+    .emoji {
+        font-size: 3.5rem;
+        font-weight: 500;
+
+        transform-origin: left;
+
+        transition: all 1s ease;
+        &.visible {
+
+        }
+        height: 6rem;
+        .caret {
+            border-color: $primary-color;
+        }
+    }
+    .emoji {
+        margin-left: 1rem;
+    }
+
+    .about-me__comment-section {
+        //@include showBounds;
+        width: 100%;
+        max-width: 2000px;
+        height: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        gap: 20px;
+
+        @mixin profile-img-fill($color) {
+            .image-wrapper {
+                path {
+                    fill: $color;
+                }
+            }
+        }
+
+        .comment-body {
+            &:nth-child(1) {
+                //margin-left: auto;
+                //margin-top: auto;
+                @include profile-img-fill(rgba(80, 9, 9, 0.8));
+            }
+            &:nth-child(2) {
+                margin-top: auto;
+                margin-bottom: auto;
+                @include profile-img-fill(rgba(10, 67, 10, 0.8));
+            }
+            &:nth-child(3) {
+                margin-top: auto;
+                //margin-left: auto;
+                @include profile-img-fill(rgba(9, 9, 80, 0.8));
+            }
+        }
+    }
+}
+
+@keyframes appear {
+    from {
+        visibility: hidden;
+    }
+    to {
+        visibility: visible;
+    }
+}
+
+@media only screen and (max-width: 65em) {
+    .about-me__comment-section {
+        flex-wrap: wrap;
+    }
+}
+
+@media only screen and (max-width: 50em) {
+    .about-me {
+        margin: 0;
+        padding-left: 5vw;
+        padding-right: 5vw;
+
+        pre {
+            font-size: clamp(0.5rem, 0.7rem + 2vw, 10vw);
+            text-wrap: pretty;
+
+            font-family: "Tahoma", sans-serif;
+        }
+        .about-me__greeting {
+            //width: 100%;
+            margin-bottom: 50px;
+            p {
+                font-size: clamp(1rem, 1.2rem + 2vw, 10vw);
+            }
+            .caret {
+                font-size: clamp(1rem, 1.2rem + 2vw, 10vw);
+            }
+            .emoji {
+                font-size: clamp(1rem, 1.2rem + 2vw, 10vw);
+                margin-left: clamp(0.5rem, 0.5rem + 2vw, 0.8rem);
+            }
+        }
+    }
+}

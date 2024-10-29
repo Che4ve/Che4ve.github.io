@@ -1,0 +1,59 @@
+@import '_default.scss';
+
+.skills-container {
+    //@include showBounds;
+    width: auto;
+    height: auto;
+    padding-left: 150px;
+    padding-right: 50px;
+    padding-top: 30px;
+    padding-bottom: 5%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    h1 {
+        z-index: -1;
+        position: relative;
+        font-family: "Tahoma", sans-serif;
+        font-weight: 500;
+        margin-bottom: 75px;
+
+        &::after {
+            @include headerBackground(250%, 150%, rgba(211, 211, 211, 0.2));
+            z-index: -1;
+        }
+    }
+
+    .skills-container__skills {
+        z-index: -1;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        p {
+            font-family: sans-serif;
+        }
+    }
+}
+
+@media only screen and (max-width: 50em) {
+    .skills-container {
+        //@include showBounds;
+        padding-right: 5vw;
+        padding-left: 8vw;
+        padding-bottom: 10vw;
+
+        .skills-container__skills {
+            overflow: hidden;
+            //@include showBounds;
+            display: flex;
+            flex-wrap: wrap;
+            gap: clamp(0.2rem, 0.5rem + 1vw, 10vw);
+
+            .skill-container__text {
+                font-size: clamp(0.2rem, 0.725rem + 2vw, 10vw);
+            }
+        }
+    }
+}

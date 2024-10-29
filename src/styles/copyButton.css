@@ -1,0 +1,33 @@
+.copy-button {
+  height: 30px;
+  width: 30px;
+  border-radius: 5px;
+}
+.copy-button:hover {
+  transform: translate(1px, -1.5px);
+  cursor: pointer;
+}
+.copy-button:hover .main-rect {
+  stroke: rgba(0, 128, 0, 0.9);
+}
+.copy-button:active {
+  scale: 1.1 1.1;
+}
+.copy-button:active .main-rect {
+  fill: rgba(65, 227, 65, 0.3);
+}
+.copy-button:not(:active) {
+  transition: all 0.6s ease;
+}
+.copy-button:not(:active) .main-rect {
+  transition: fill 1.5s ease, stroke 0.5s ease;
+}
+.copy-button path {
+  stroke: rgba(0, 0, 0, 0.6);
+}
+.copy-button .main-rect {
+  stroke: rgba(0, 0, 0, 0.7);
+  fill: transparent;
+}
+
+/*# sourceMappingURL=copyButton.css.map */

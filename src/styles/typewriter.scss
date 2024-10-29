@@ -1,0 +1,37 @@
+.typewriter {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+
+    overflow: hidden;
+    white-space: nowrap;
+
+    margin: 0 0;
+    font-size: inherit;
+
+    font-weight: inherit;
+    font-family: inherit;
+    letter-spacing: 0.05em;
+}
+
+.caret {
+    height: 1.2em;
+    border-left: 0.07em solid transparent;
+
+    animation: caret 0.9s ease-in-out infinite;
+}
+
+.caret.finished {
+    transition: opacity 3s ease-out, border-color 3s ease-out;
+    opacity: 0;
+    border-color: transparent;
+}
+
+@keyframes caret {
+    50% {
+        border-color: transparent;
+    }
+    55% {
+
+    }
+}

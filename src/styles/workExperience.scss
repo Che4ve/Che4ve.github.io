@@ -1,0 +1,245 @@
+@import "_default.scss";
+
+.work-experience {
+
+    &:before {
+        content: '';
+        overflow: hidden;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-image: radial-gradient(
+        rgba(0, 0, 0, 0.1) 2px,
+        transparent 3px
+        );
+        background-size: 50px 50px;
+    }
+
+    position: relative;
+    height: auto;
+    width: auto;
+
+    background-color: rgba(211, 211, 211, 0.5);
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding-left: 100px;
+    padding-top: 30px;
+    padding-bottom: 100px;
+
+    overflow: hidden;
+
+    h1 {
+        z-index: 0;
+        position: relative;
+        font-family: "Tahoma", sans-serif;
+        font-weight: 500;
+        margin-left: 50px;
+        align-self: flex-start;
+
+        &::after {
+            @include headerBackground(250%, 150%, rgba(255, 255, 255, 0.9));
+            z-index: -1;
+        }
+
+    }
+
+
+    .work-experience__body {
+        width: 90%;
+        min-height: 500px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+
+        .timeline {
+            z-index: 1;
+            margin-left: 150px;
+        }
+
+        .img-wrapper {
+            z-index: 0;
+            position: relative;
+            min-width: 500px;
+            border-radius: 20px;
+            height: 500px;
+            aspect-ratio: 4/3;
+            overflow: hidden;
+
+            box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.4);
+            transition: all 1s ease-out;
+            animation: appear 0.8s ease forwards;
+
+            &.changed {
+                filter: blur(1px) brightness(1.15);
+                transform: scale(0.99) translateX(10px);
+            }
+
+            img {
+                @include center;
+                position: absolute;
+                height: 107%;
+            }
+        }
+    }
+}
+
+
+@keyframes appear {
+    from {
+        transform: translateY(10%);
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@media only screen and (max-width: 1400px) {
+    .work-experience {
+        .work-experience__body {
+            .timeline {
+                margin-left: 50px;
+                .period {
+                    height: 1.5rem;
+                }
+            }
+            .img-wrapper {
+                position: absolute;
+                right: 0;
+                block-size: 60%;
+                border-top-right-radius: 0;
+                border-bottom-right-radius: 0;
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 50em) {
+    @import 'timeline.scss';
+    $circle-radius: 30px;
+    .work-experience {
+        z-index: 0;
+        padding-left: 0;
+        h1 {
+            margin-left: 8vw;
+            //padding-left: 8vw;
+        }
+
+        .work-experience__body {
+            width: 100vw;
+            justify-content: flex-start;
+
+            .timeline {
+                margin-left: 10px;
+
+                &:before {
+                    width: $circle-radius * 2 + 25px;
+                    left: -13.5px;
+                    height: 100%;
+                    scale: 1 0.9;
+
+                    background-color: white;
+
+                    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+                    border-radius: 0 40px 40px 0;
+                }
+                .work {
+
+                    width: 100vw;
+                    justify-content: space-between;
+
+                    .workPath {
+
+                        width: $circle-radius * 2;
+                        left: 0;
+                        .workIcon {
+                            width: $circle-radius * 2;
+                            height: $circle-radius * 2;
+                        }
+
+                    }
+                    .workCard {
+                        position: relative;
+                        top: 0;
+                        //right: 0;
+                        padding: 10px 10px 10px 20px;
+
+                        border-radius: 20px 0 0 20px;
+                        border: 2px solid rgba(92, 92, 92, 0.2);
+                        width: clamp(40%, 50% + 20vw, 100% - 140px);
+                        height: 120px;
+                        text-wrap: wrap;
+
+                        transform: translateX(25%);
+
+                        background-color: rgba(255, 255, 255, 0.6);
+                        backdrop-filter: blur(5px);
+                        -webkit-backdrop-filter: blur(5px);
+
+                        transition:
+                                transform 1s ease,
+                                translate 0.8s ease,
+                                opacity 0.6s ease,
+                                box-shadow 0.4s ease;
+
+                        &.visible {
+                            transform: translateX(0px);
+                        }
+                        .period {
+                            height: 1.3rem;
+                        }
+                        .more {
+                            position: absolute;
+                            visibility: hidden;
+                        }
+                        p {
+                            font-size: clamp(0.3rem, 0.3rem + 1.5vw, 1.25rem);
+                        }
+                    }
+                }
+            }
+
+            .img-wrapper {
+                z-index: -1;
+                position: absolute;
+                left:0;
+
+                border-radius: 0 10px 10px 0;
+
+                //aspect-ratio: 16/10;
+                overflow: hidden;
+
+                box-shadow: 5px 20px 40px rgba(0, 0, 0, 0.4);
+
+                block-size: 50%;
+                //width: 100px;
+
+                animation: appear 1.0s ease forwards;
+
+                img {
+                    left: 50%;
+                    height: 125%;
+                }
+
+                &:after {
+                    content: '';
+                    position: absolute;
+                    width: 100%; height:100%;
+                    top:0; left:0;
+                    border-image: fill 0 linear-gradient(transparent 30%, rgba(0, 0, 0, 0.9) 100%);
+
+                }
+                &.changed {
+                    filter: blur(3px) brightness(1.15);
+                    transform: scale(1.0);
+                }
+            }
+        }
+    }
+}

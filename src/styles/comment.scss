@@ -1,0 +1,169 @@
+@import "_default.scss";
+
+.comment-body {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
+    padding-inline: clamp(3px, 2px + 5vw, 30px);
+    padding-block: 20px;
+
+    border: 2px solid rgba(128, 128, 128, 0.2);
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 30px;
+    min-width: 300px;
+    max-width: 500px;
+    height: fit-content;
+
+    //width: clamp(300px, 40%, 90%);
+
+    .comment-body__profile-body {
+        //@include showBounds;
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 20px;
+        width: 100%;
+
+        .image-wrapper {
+            position: relative;
+            border-radius: 50%;
+            border: 3px solid rgba(0, 0, 0, 0.2);
+            inline-size: clamp(30px, 30px + 10vw, 60px);
+            block-size: clamp(10px, 30px + 10vw, 60px);
+
+            aspect-ratio: 1;
+
+            overflow: clip;
+            background-color: rgba(145, 145, 145, 0.1);
+
+            svg {
+                position: absolute;
+                top: 45%;
+                left: 3%;
+                scale: 3.3;
+                width: 100%;
+                height: 100%;
+
+                path {
+                    fill: rgba(104, 16, 16, 0.9);
+                }
+            }
+        }
+
+
+
+        .profile-info {
+            padding-top: 0;
+            text-align: left;
+            line-height: 0.8rem;
+
+            border-radius: 30px;
+
+            .profile-info__name-box {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                height: 1.5rem;
+                .profile-info__name {
+                    //margin-top: 0;
+                    font-size: clamp(0.8rem, 0.8rem + 2vw, 1.5rem);
+                }
+
+                svg {
+                    margin-left: 10px;
+                    width: clamp(0.8rem, 0.8rem + 2vw, 1.4rem);
+                    height: clamp(0.8rem, 0.8rem + 2vw, 1.4rem);
+                }
+            }
+
+            .profile-info__username-box {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+
+                margin-top: 5px;
+                opacity: 0.5;
+                .profile-info__username {
+                    margin-block: 0;
+                    margin-right: 5px;
+                    font-size: clamp(0.8rem, 0.8rem + 2vw, 1.3rem);
+                }
+                .copy-button {
+                    scale: 0.9;
+                }
+            }
+        }
+    }
+
+    .comment-body__content {
+        position: relative;
+        padding-top: 20px;
+        opacity: 0.75;
+
+        &::before {
+            position: absolute;
+            left: 50%;
+            top: 0%;
+            translate: -50% 0%;
+            margin-top: 20px;
+            content: "";
+            //z-index: 2;
+            width: 90%;
+            height: 2px;
+            background-color: rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+        }
+
+        pre {
+            font-size: clamp(0.5rem, 0.5rem + 2vw, 1.3rem);
+            text-wrap: balance;
+        }
+    }
+
+    .comment-body__actions {
+        justify-self: flex-end;
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: flex-start;
+        gap: 25px;
+
+        margin-top: auto;
+        margin-bottom: 5px;
+        margin-left: 10px;
+
+        opacity: 0.5;
+        svg {
+            height: 1.725rem;
+            width: 1.725rem;
+            cursor: pointer;
+
+            transition: all 0.2s ease;
+        }
+
+        .like-svg {
+            fill: black;
+            scale: 0.8;
+            &.toggled {
+                fill: red;
+            }
+        }
+
+        .share-svg {
+            fill: black;
+            &:active {
+                transition: fill step-start;
+                fill: #01afff;
+            }
+            &:not(:active) {
+                transition: fill 3s ease;
+            }
+        }
+    }
+
+}

@@ -1,0 +1,38 @@
+@charset "UTF-8";
+.typewriter {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  overflow: hidden; /* Обрезаем текст, чтобы не был виден до появления */
+  white-space: nowrap; /* Запрещаем перенос строки */
+  margin: 0 0;
+  font-size: var(--font-size);
+  font-weight: bold;
+  font-family: "PT Sans", sans-serif;
+  letter-spacing: 0.05em; /* Space between letters */
+}
+
+.p {
+  float: left;
+  height: 100%;
+}
+
+.caret {
+  height: calc(var(--font-size) + 10px);
+  border-left: calc(var(--font-size) / 15) solid transparent;
+  animation: caret 0.9s ease-in-out infinite; /* Animation for the blinking cursor */
+}
+
+.caret.finished {
+  transition: opacity 3s ease-out, border-color 3s ease-out;
+  opacity: 0;
+  border-color: transparent;
+}
+
+@keyframes caret {
+  50% {
+    border-color: transparent; /* Cursor blinks */
+  }
+}
+
+/*# sourceMappingURL=typewriter.css.map */

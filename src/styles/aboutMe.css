@@ -1,0 +1,129 @@
+.about-me {
+  width: auto;
+  height: auto;
+  margin-left: 150px;
+  padding-right: 5%;
+  padding-top: 30px;
+  padding-bottom: 50px;
+  font-size: 1.4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+.about-me pre {
+  font-size: 1.125rem;
+  text-align: left;
+  text-wrap: wrap;
+  font-family: "Tahoma", sans-serif;
+}
+.about-me .about-me__greeting {
+  margin: 20px auto 55px;
+  scale: 0.9;
+  opacity: 0.8;
+}
+.about-me .about-me__greeting:has(.typewriter.visible) {
+  transition: all 1.5s ease;
+  scale: 1;
+  opacity: 1;
+}
+.about-me .about-me__greeting:not(:has(.typewriter.visible)) {
+  transition: all 3s ease;
+}
+.about-me .about-me__greeting::before {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  width: 110%;
+  height: 7rem;
+  padding-inline: 20px;
+  background-color: white;
+  border-radius: 30px;
+  border: 2px solid rgba(128, 128, 128, 0.2);
+  box-shadow: 4px 4px 10px rgba(8, 3, 25, 0.1);
+}
+.about-me .typewriter,
+.about-me .emoji {
+  font-size: 3.5rem;
+  font-weight: 500;
+  transform-origin: left;
+  transition: all 1s ease;
+  height: 6rem;
+}
+.about-me .typewriter .caret,
+.about-me .emoji .caret {
+  border-color: #111317;
+}
+.about-me .emoji {
+  margin-left: 1rem;
+}
+.about-me .about-me__comment-section {
+  width: 100%;
+  max-width: 2000px;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 20px;
+}
+.about-me .about-me__comment-section .comment-body:nth-child(1) .image-wrapper path {
+  fill: rgba(80, 9, 9, 0.8);
+}
+.about-me .about-me__comment-section .comment-body:nth-child(2) {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.about-me .about-me__comment-section .comment-body:nth-child(2) .image-wrapper path {
+  fill: rgba(10, 67, 10, 0.8);
+}
+.about-me .about-me__comment-section .comment-body:nth-child(3) {
+  margin-top: auto;
+}
+.about-me .about-me__comment-section .comment-body:nth-child(3) .image-wrapper path {
+  fill: rgba(9, 9, 80, 0.8);
+}
+
+@keyframes appear {
+  from {
+    visibility: hidden;
+  }
+  to {
+    visibility: visible;
+  }
+}
+@media only screen and (max-width: 65em) {
+  .about-me__comment-section {
+    flex-wrap: wrap;
+  }
+}
+@media only screen and (max-width: 50em) {
+  .about-me {
+    margin: 0;
+    padding-left: 5vw;
+    padding-right: 5vw;
+  }
+  .about-me pre {
+    font-size: clamp(0.5rem, 0.7rem + 2vw, 10vw);
+    text-wrap: pretty;
+    font-family: "Tahoma", sans-serif;
+  }
+  .about-me .about-me__greeting {
+    margin-bottom: 50px;
+  }
+  .about-me .about-me__greeting p {
+    font-size: clamp(1rem, 1.2rem + 2vw, 10vw);
+  }
+  .about-me .about-me__greeting .caret {
+    font-size: clamp(1rem, 1.2rem + 2vw, 10vw);
+  }
+  .about-me .about-me__greeting .emoji {
+    font-size: clamp(1rem, 1.2rem + 2vw, 10vw);
+    margin-left: clamp(0.5rem, 0.5rem + 2vw, 0.8rem);
+  }
+}
+
+/*# sourceMappingURL=aboutMe.css.map */

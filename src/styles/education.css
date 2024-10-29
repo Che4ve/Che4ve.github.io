@@ -1,0 +1,149 @@
+@charset "UTF-8";
+.education-container {
+  width: auto;
+  height: auto;
+  padding: 30px 50px 30px 150px;
+  display: block;
+}
+.education-container .education-container__header {
+  position: relative;
+  z-index: -1;
+  width: fit-content;
+  font-family: "Tahoma", sans-serif;
+  font-weight: 500;
+  margin-bottom: 3rem;
+}
+.education-container .education-container__header::after {
+  content: "";
+  position: absolute;
+  left: -100%;
+  top: -100%;
+  transform: translateY(50%);
+  width: 250%;
+  height: 150%;
+  background-color: rgba(211, 211, 211, 0.2);
+  border-top-right-radius: 30px;
+  border-bottom-right-radius: 30px;
+  box-shadow: 4px 4px 10px rgba(8, 3, 25, 0.1);
+  z-index: -1;
+}
+.education-container .education-container__body {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 1.75rem;
+  flex-wrap: nowrap;
+  width: auto;
+  max-width: 1900px;
+}
+@media only screen and (max-width: 1100px) {
+  .education-container .education-container__body {
+    flex-direction: column-reverse;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+}
+.education-container .education-container__body .education-container__img-wrapper {
+  z-index: -1;
+  width: clamp(200px, 200px + 30vw, 500px);
+  height: auto;
+  aspect-ratio: 1;
+}
+.education-container .education-container__body .education-container__img-wrapper svg {
+  filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.1));
+  width: 100%;
+  height: 100%;
+}
+.education-container .education-container__body .education-container__img-wrapper svg path {
+  fill: #0a85cc;
+}
+.education-container .education-container__body .education-container__content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  padding-block: 1rem;
+  padding-inline: clamp(0.5rem, 0.3rem + 3vw, 2rem);
+  height: auto;
+  width: auto;
+  min-width: 250px;
+  text-wrap: pretty;
+  text-align: left;
+}
+.education-container .education-container__body .education-container__content p {
+  font-size: clamp(0.3rem, 0.3rem + 2vw, 1.2rem);
+}
+.education-container .education-container__body .education-container__content .education-period {
+  align-self: center;
+}
+.education-container .education-container__body .education-container__content .education-name {
+  align-self: center;
+  text-align: center;
+  margin-bottom: 0;
+}
+.education-container .education-container__body .education-container__content .education-faculty {
+  display: flex;
+  align-items: center;
+}
+.education-container .education-container__body .education-container__content .education-faculty:before {
+  content: "Факультет: ";
+  background-color: rgba(128, 128, 128, 0.11);
+  padding: 0.5rem 0.6rem 0.5rem 0.6rem;
+  margin-inline: 0.5rem;
+  border-radius: 10px;
+  font-size: clamp(0.4rem, 0.4rem + 1.5vw, 1.2rem);
+}
+.education-container .education-container__body .education-container__content .education-speciality {
+  display: flex;
+  align-items: center;
+}
+.education-container .education-container__body .education-container__content .education-speciality:before {
+  content: "Специализация: ";
+  background-color: rgba(128, 128, 128, 0.11);
+  padding: 0.5rem 0.6rem 0.5rem 0.6rem;
+  margin-inline: 0.5rem;
+  border-radius: 10px;
+  font-size: clamp(0.4rem, 0.4rem + 1.5vw, 1.2rem);
+}
+.education-container .education-container__body .education-container__content hr {
+  z-index: -1;
+  width: 100%;
+  opacity: 0.5;
+}
+.education-container .education-container__body .education-container__content .education-courses__list {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  padding: 0;
+  list-style-type: circle;
+  list-style-position: inside;
+}
+.education-container .education-container__body .education-container__content .education-courses__list:before {
+  content: "Курсы: ";
+  background-color: rgba(128, 128, 128, 0.11);
+  padding: 0.5rem 0.6rem 0.5rem 0.6rem;
+  margin-inline: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-radius: 10px;
+  font-size: clamp(0.4rem, 0.4rem + 1.5vw, 1.2rem);
+}
+.education-container .education-container__body .education-container__content .education-courses__list li {
+  margin-left: 2rem;
+  margin-bottom: 0.5rem;
+  text-align: left;
+  font-size: clamp(0.3rem, 0.3rem + 2vw, 1.2rem);
+}
+
+@media only screen and (max-width: 50em) {
+  .education-container {
+    padding-inline: 7vw;
+  }
+  .education-container .education-container__body .education-container__img-wrapper {
+    height: clamp(200px, 200px + 30vw, 500px);
+  }
+}
+
+/*# sourceMappingURL=education.css.map */

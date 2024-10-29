@@ -1,0 +1,193 @@
+@import '_default.scss';
+
+$height-size: 50px;
+
+.contacts {
+    z-index: 2;
+    position: fixed;
+    top: 25px;
+    right: 50px;
+    height: $height-size;
+    width: 250px;
+
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+
+    .contacts__download-button,
+    .contacts__expand-button {
+        display: flex;
+        align-items: center;
+        position: relative;
+
+        max-width: 150px;
+        min-width: 50px;
+
+        height: 100%;
+
+        font-size: 18px;
+        text-decoration: none;
+        color: black;
+
+        background-color: $secondary-color;
+        border-radius: 25px;
+        box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.15);
+
+        svg {
+            position: absolute;
+            left: 10px;
+            width: $height-size - 20px;
+            height: $height-size - 20px;
+        }
+        p {
+            position: absolute;
+            opacity: 0;
+            right: 20px;
+        }
+
+        &:hover {
+            transition: min-width 0.5s ease;
+            -webkit-transition: min-width 0.5s ease;
+            min-width: 140px;
+            cursor: pointer;
+            p {
+                transition: opacity 0.5s ease 0.3s;
+                opacity: 1;
+            }
+        }
+        &:not(:hover) {
+            transition: min-width 0.5s ease 0.3s;
+            -webkit-transition: min-width 0.5s ease 0.3s;
+            p {
+                transition: opacity 0.5s ease;
+                opacity: 0;
+            }
+        }
+    }
+
+    .contacts__expand-button {
+        outline: none;
+        border: none;
+        p {
+            right: 12px;
+        }
+    }
+}
+
+#contacts__modal {
+    $padding-inline: 50px;
+    padding-inline: $padding-inline;
+    width: clamp(225px, 90vw - $padding-inline * 2, 500px);
+    height: 500px;
+    .modal__title {
+        font-family: sans-serif;
+    }
+    .modal__content {
+        padding-top: 3.125rem;
+        overflow: hidden;
+        font-size: clamp(0.5rem, 0.8rem + 1.5vw, 1.25rem);
+        div {
+            height: 100%;
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 20px;
+
+            svg {
+                height: 30px;
+                width: 30px;
+                border-radius: 5px;
+
+                &:hover {
+                    transform: translate(1px, -1.5px);
+                    cursor: pointer;
+                    .main-rect {
+                        stroke: rgba(0, 128, 0, 0.9);
+                    }
+                }
+                &:active {
+                    .main-rect {
+                        fill: rgba(65, 227, 65, 0.3);
+                    }
+                    scale: 1.1 1.1;
+                }
+                &:not(:active) {
+                    .main-rect {
+                        transition: fill 1.5s ease, stroke 0.5s ease;
+                    }
+                    transition: all 0.6s ease;
+                }
+                path {
+                    stroke: rgba(0, 0, 0, 0.6);
+                }
+                .main-rect {
+                    stroke: rgba(0, 0, 0, 0.7);
+                    fill: transparent;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (max-width: 50em) {
+    .contacts {
+        //z-index: 2;
+        position: fixed;
+        top: 10px;
+        left: 5%;
+
+        flex-direction: row;
+
+        .contacts__download-button,
+        .contacts__expand-button {
+            color: $secondary-color;
+            background-color: $primary-color;
+            opacity: 0.95;
+            svg {
+                path {
+                    fill: $secondary-color;
+                    stroke: $secondary-color;
+                    stroke-width: 0.3px;
+                }
+            }
+
+        }
+
+        .contacts__expand-button {
+            min-width: 140px;
+            p {
+                position: absolute;
+                opacity: 1;
+                right: 14px;
+            }
+            &:not(:hover) {
+                p {
+                    opacity: 1;
+                }
+            }
+        }
+        .contacts__download-button {
+            &:hover {
+                min-width: 50px;
+                cursor: pointer;
+                p {
+                    visibility: hidden;
+                }
+            }
+            &:not(:hover) {
+                p {
+                    visibility: hidden;
+                }
+            }
+        }
+    }
+    #contacts__modal {
+        @import 'modal.scss';
+
+        //width: clamp(225px, 90vw - $padding-inline * 2, 500px);
+    }
+}

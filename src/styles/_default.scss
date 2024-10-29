@@ -1,0 +1,30 @@
+$primary-color: #111317 !default;
+//$secondary-color: #c0f3ff !default;
+$secondary-color: #e0f4ff !default;
+
+@mixin showBounds() {
+    border: 1px solid rgba(0, 0, 0, 0.50); border-radius: 10px;
+}
+
+@mixin center() {
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+}
+
+@mixin headerBackground($width-percent, $height-percent, $color) {
+    $height: $height-percent;
+    content: "";
+    position: absolute;
+    left: -100%;
+    top: 50% - $height;
+    transform: translateY(50%);
+
+    width: $width-percent;
+    height: $height;
+
+    background-color: $color;
+    border-top-right-radius: 30px;
+    border-bottom-right-radius: 30px;
+    box-shadow: 4px 4px 10px rgba(8, 3, 25, 0.1);
+}
