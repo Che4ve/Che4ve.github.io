@@ -79,22 +79,6 @@ export const Header = React.forwardRef((props: HeaderProps, ref: ForwardedRef<HT
     return (
         <div className="header" ref={ref} onMouseMove={handleOnMouseMove}>
             <div className={'header__greeting-box'}>
-                <div className={`header__greeting`}>
-                    {/*<Typewriter text={greeting.text} speed={100} onFinish={handleOnTypewriterFinish}/>*/}
-                    {/*<Emoji symbol={greeting.emoji} label={greeting.text}*/}
-                    {/*       style={{opacity: typewriterFinished ? 1 : 0, transition: 'opacity 2s ease'}}*/}
-                    {/*/>*/}
-                </div>
-
-                <span className={`header__info`}>
-                    {typewriterFinished &&
-                        (<>
-                            {/*<Typewriter text={'Меня зовут Василий, я - '} speed={40}/>*/}
-                            {/*<Typewriter text={'Добро пожаловать на мой сайт!'} speed={35}/>*/}
-                        </>)
-                    }
-                </span>
-
                 <div className={`header__title`}>
                     <pre>{'FRONT - END\n'}</pre>
                     <pre>{'WEB-DEVELOPER'}</pre>

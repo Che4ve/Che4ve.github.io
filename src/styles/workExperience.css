@@ -267,6 +267,52 @@
   .timeline .work:first-child .workPath .line {
     opacity: 0;
   }
+  .timeline:not(:has(.workCard.visible)):after {
+    position: absolute;
+    content: "";
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    transform: translateY(-50%) rotate(-80deg);
+    width: 200px;
+    height: 200px;
+    background: url("../assets/broken-line-arrow.svg");
+    background-size: 200px 200px;
+    opacity: 0.3;
+    animation: moveArrow 1.7s infinite cubic-bezier(0.53, 0.13, 0.34, 0.86);
+  }
+  @keyframes showFingerTap {
+    20% {
+      opacity: 0;
+      transform: translateY(200%);
+    }
+    60% {
+      transform: translateY(70%);
+      opacity: 0.7;
+      scale: 1;
+    }
+    65% {
+      scale: 0.9;
+    }
+    70% {
+      scale: 1.1;
+    }
+    80% {
+      transform: translateY(70%);
+      opacity: 0.7;
+      scale: 1;
+    }
+    100% {
+      transform: translateY(80%);
+      opacity: 0;
+      scale: 1;
+    }
+  }
+  @keyframes moveArrow {
+    50% {
+      transform: translateY(-30%) rotate(-80deg) translateX(20%);
+    }
+  }
   #work-modal .modal__title {
     font-family: sans-serif;
   }
@@ -321,6 +367,36 @@
   }
 }
 @media only screen and (max-width: 50em) and (max-width: 50em) {
+  .timeline:not(:has(.workCard.visible)):after {
+    position: absolute;
+    content: "";
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    left: 175px;
+    top: 48%;
+    transform: translateY(-50%) rotate(-80deg);
+    width: 150px;
+    height: 150px;
+    background: url("../assets/broken-line-arrow.svg");
+    background-size: 150px 150px;
+    opacity: 0.3;
+    animation: moveArrow 1.7s infinite cubic-bezier(0.53, 0.13, 0.34, 0.86);
+  }
+  .timeline.showTip .workCard.visible:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    background: url("../assets/finger-tap.svg");
+    background-size: 50px 50px;
+    width: 50px;
+    height: 50px;
+    transition: all 0.5s ease;
+    animation: showFingerTap 2s ease 1;
+    opacity: 0;
+  }
   .workIcon.selected {
     scale: 1.2;
     translate: 30% 0%;
@@ -435,7 +511,7 @@
     height: 100%;
     top: 0;
     left: 0;
-    border-image: fill 0 linear-gradient(transparent 30%, rgba(0, 0, 0, 0.9) 100%);
+    border-image: fill 0 linear-gradient(transparent 0%, rgba(0, 0, 0, 0.9) 100%);
   }
   .work-experience .work-experience__body .img-wrapper.changed {
     filter: blur(3px) brightness(1.15);

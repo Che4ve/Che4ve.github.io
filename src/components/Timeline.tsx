@@ -1,6 +1,5 @@
 import '../styles/timeline.scss'
-import {MouseEventHandler, ReactNode, useState} from "react";
-import {useIntersectionObserver} from "usehooks-ts"
+import {useEffect, useRef, useState} from "react";
 import {ReactComponent as DotsSvg} from "../assets/workDots.svg";
 import {WorkData} from "../models/WorkData";
 import {Modal} from "./Modal";
@@ -20,6 +19,26 @@ export const Timeline = (props: TimelineProps) => {
     const [hoveredIndex, setHoveredIndex] = useState(-1);
     const [modalVisible, setModalVisible] = useState(false);
     const [data, setData] = useState <WorkData | undefined > (undefined);
+    const [hasShownTip, setHasShownTip] = useState(false);
+
+    const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+    useEffect(() => {
+        if (timeoutRef.current) {
+            clearTimeout(timeoutRef.current)
+        }
+        timeoutRef.current = setTimeout(() => {
+            if (hoveredIndex !== -1 && !hasShownTip) {
+                setHasShownTip(true);
+            }
+        }, 2000)
+        return () => {
+            if (timeoutRef.current) {
+                clearTimeout(timeoutRef.current)
+            }
+        }
+    }, [hasShownTip, hoveredIndex]);
+
 
     const handleIconMouseOver = (event: React.MouseEvent<HTMLDivElement>, data: WorkData, index: number) => {
         setHoveredIndex(index);
@@ -39,7 +58,7 @@ export const Timeline = (props: TimelineProps) => {
 
     return (
         <>
-        <div className="timeline">
+        <div className={`timeline ${hasShownTip ? '' : 'showTip'}`}>
             {props.workData.map((data: WorkData, index: number) => {
                 return (
                     <div className={`work`} id={`work-${index}`} key={`work-${index}`}>

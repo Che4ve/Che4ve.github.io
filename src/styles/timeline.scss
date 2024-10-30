@@ -213,7 +213,20 @@ $circle-radius: 50px;
                 opacity: 0;
             }
 
-
+            //&.visible:after {
+            //    content: "";
+            //    position: absolute;
+            //    @include center;
+            //    background: url("../assets/finger-tap.svg");
+            //    background-size: 50px 50px;
+            //    width: 50px;
+            //    height: 50px;
+            //
+            //    transition: all 0.5s ease;
+            //    animation: showFingerTap 2s ease 1;
+            //    opacity: 0;
+            //    $shownTip: true;
+            //}
         }
 
         &:first-child {
@@ -227,10 +240,63 @@ $circle-radius: 50px;
                 }
             }
         }
-    }
+        //@include showBounds;
 
+    }
+    &:not(:has(.workCard.visible)) {
+        &:after {
+            $size: 200px;
+            position: absolute;
+            content: "";
+            @include center;
+
+            transform: translateY(-50%) rotate(-80deg);
+            width: $size;
+            height: $size;
+
+            background: url("../assets/broken-line-arrow.svg");
+            background-size: $size $size;
+
+            opacity: 0.3;
+
+            animation: moveArrow 1.7s infinite cubic-bezier(.53,.13,.34,.86);
+        }
+    }
 }
 
+@keyframes showFingerTap {
+    20% {
+        opacity: 0;
+        transform: translateY(200%);
+    }
+    60% {
+        transform: translateY(70%);
+        opacity: 0.7;
+        scale: 1.0;
+    }
+    65% {
+        scale: 0.9;
+    }
+    70% {
+        scale: 1.1;
+    }
+    80% {
+        transform: translateY(70%);
+        opacity: 0.7;
+        scale: 1.0;
+    }
+    100% {
+        transform: translateY(80%);
+        opacity: 0;
+        scale: 1.0;
+    }
+}
+
+@keyframes moveArrow {
+    50% {
+        transform: translateY(-30%) rotate(-80deg) translateX(20%);
+    }
+}
 
 
 #work-modal {
@@ -295,6 +361,46 @@ $circle-radius: 50px;
 }
 
 @media only screen and (max-width: 50em) {
+    .timeline {
+        &:not(:has(.workCard.visible)) {
+            &:after {
+                $size: 150px;
+                //@include showBounds;
+                position: absolute;
+                content: "";
+                @include center;
+                left: 175px;
+                top: 48%;
+
+                transform: translateY(-50%) rotate(-80deg);
+                width: $size;
+                height: $size;
+
+                background: url("../assets/broken-line-arrow.svg");
+                background-size: $size $size;
+
+                opacity: 0.3;
+
+                animation: moveArrow 1.7s infinite cubic-bezier(.53,.13,.34,.86);
+            }
+        }
+        &.showTip {
+            .workCard.visible:after {
+                content: "";
+                position: absolute;
+                @include center;
+                background: url("../assets/finger-tap.svg");
+                background-size: 50px 50px;
+                width: 50px;
+                height: 50px;
+
+                transition: all 0.5s ease;
+                animation: showFingerTap 2s ease 1;
+                opacity: 0;
+                $shownTip: true;
+            }
+        }
+    }
     .workIcon {
         &.selected {
             scale: 1.2;

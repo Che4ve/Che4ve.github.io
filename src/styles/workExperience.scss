@@ -219,6 +219,7 @@
 
                 block-size: 50%;
                 //width: 100px;
+                //filter: blur(3px);
 
                 animation: appear 1.0s ease forwards;
 
@@ -232,7 +233,7 @@
                     position: absolute;
                     width: 100%; height:100%;
                     top:0; left:0;
-                    border-image: fill 0 linear-gradient(transparent 30%, rgba(0, 0, 0, 0.9) 100%);
+                    border-image: fill 0 linear-gradient(transparent 0%, rgba(0, 0, 0, 0.9) 100%);
 
                 }
                 &.changed {

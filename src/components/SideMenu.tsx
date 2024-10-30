@@ -2,14 +2,12 @@ import '../styles/sideMenu.scss'
 import React, {useState, useEffect, ReactNode, ReactElement, useContext, useRef} from "react";
 import {ReactComponent as MenuIcon} from '../assets/menu-options.svg';
 import {ReactComponent as BackIcon} from '../assets/options-back.svg';
-import {ReactComponent as DotIcon} from '../assets/dot.svg';
 import {ReactComponent as CaseIcon} from '../assets/sideMenu/case.svg';
 import {ReactComponent as GraduationIcon} from '../assets/sideMenu/graduation-cap.svg';
 import {ReactComponent as HomeIcon} from '../assets/sideMenu/home.svg';
 import {ReactComponent as ProfileIcon} from '../assets/sideMenu/profile.svg';
 import {ReactComponent as SkillIcon} from '../assets/sideMenu/skill.svg';
 import {ScrollContext} from "../App";
-import {smoothScroll} from "../utils/smoothScroll";
 
 
 interface MenuOption {

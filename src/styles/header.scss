@@ -122,6 +122,7 @@ $font-size-info: 20px;
         }
 
         .header__title {
+            margin-top: 90px;
             &::before {
                 content: "";
                 position: absolute;

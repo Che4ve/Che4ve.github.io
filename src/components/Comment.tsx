@@ -1,12 +1,10 @@
 import '../styles/comment.scss';
-import profileImage from "../assets/photos/me.png";
 import {ReactComponent as MySvg} from "../assets/photos/me3.svg";
 import {ReactComponent as ApprovalSvg} from "../assets/approval.svg";
 import {ReactComponent as LikeSvg} from "../assets/heart-regular.svg";
 import {ReactComponent as ShareSvg} from "../assets/share.svg";
 import React, {useEffect} from "react";
 import {CopyButton} from "./CopyButton";
-import {App} from "../App";
 
 export interface CommentProps {
     profileImage?: string,
